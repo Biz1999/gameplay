@@ -29,11 +29,15 @@ export const AppointmentCreate = () => {
     const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
 
     const handleOpenGuilds = () => {
-        setOpenGuildsModal(true);
+        setOpenGuildsModal(!openGuildsModal);
     }
     const handleGuildSelect = (guildSelect: GuildProps) => {
         setGuild(guildSelect);
         setOpenGuildsModal(false);
+    }
+
+    const handleCategorySelect = (categoryId: string) => {
+        setCategory(categoryId);
     }
 
     return (
@@ -41,8 +45,8 @@ export const AppointmentCreate = () => {
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={styles.container}
         >
-            <ScrollView>
-                <Background>
+            <Background>
+                <ScrollView>
                     <Header
                         title="Agendar Partida"
                     />
@@ -54,7 +58,7 @@ export const AppointmentCreate = () => {
 
                     <CategorySelect
                         hasCheckBox
-                        setCategory={setCategory}
+                        setCategory={handleCategorySelect}
                         categorySelected={category}
                     />
 
@@ -129,9 +133,12 @@ export const AppointmentCreate = () => {
                             />
                         </View>
                     </View>
-                </Background>
-            </ScrollView>
-            <ModalView visible={openGuildsModal}>
+                </ScrollView>
+            </Background>
+            <ModalView
+                visible={openGuildsModal}
+                closeModal={handleOpenGuilds}
+            >
                 <Guilds handleGuildSelect={handleGuildSelect} />
             </ModalView>
         </KeyboardAvoidingView>

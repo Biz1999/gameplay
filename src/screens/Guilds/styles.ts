@@ -9,13 +9,5 @@ export const styles = StyleSheet.create({
     },
     guilds: {
         width: '100%'
-    },
-    firstDivider: {
-        width: '75%',
-        height: 1,
-        backgroundColor: theme.colors.secondary40,
-        marginVertical: 15,
-        marginTop: 2,
-        alignSelf: 'flex-end'
     }
 })

@@ -36,7 +36,6 @@ export const Guilds = ({ handleGuildSelect }: Props) => {
     ]
     return (
         <View style={styles.container}>
-            <View style={styles.firstDivider} />
             <FlatList
                 data={guilds}
                 keyExtractor={item => item.id}
@@ -46,7 +45,9 @@ export const Guilds = ({ handleGuildSelect }: Props) => {
                         onPress={() => handleGuildSelect(item)}
                     />
                 )}
-                ItemSeparatorComponent={() => <ListDivider />}
+                ItemSeparatorComponent={() => <ListDivider isCentered />}
+                contentContainerStyle={{ paddingBottom: 68, paddingTop: 103 }}
+                ListHeaderComponent={() => <ListDivider isCentered />}
                 style={styles.guilds}
             />
         </View>
